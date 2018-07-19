@@ -10,21 +10,22 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate{
     
+    
+    //Outlets
     @IBOutlet weak var plusButtonOutlet: UIButton!
     @IBOutlet weak var navBarHeight: NSLayoutConstraint!
     @IBOutlet weak var navBar: UIView!
     @IBOutlet weak var tableView: UITableView!
     
+    //Variables
     var ramenImageView: UIImageView!
     var oreoImageView: UIImageView!
     var pizzaImageView: UIImageView!
     var poptartImageView: UIImageView!
     var popsicleImageView: UIImageView!
-    
-    
     var stackView: UIStackView!
     var foodTitles: [String] = []
-    var tapGesture = UITapGestureRecognizer()
+    
     
     @objc func handleTap(tapSender:UITapGestureRecognizer){
         let sender = tapSender.view!.tag
@@ -61,7 +62,7 @@ class ViewController: UIViewController, UITableViewDelegate{
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        
+        //PRAGMA MARK: Tap gestures & setting images
         let ramenTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         let oreoTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         let pizzaTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
@@ -117,19 +118,13 @@ class ViewController: UIViewController, UITableViewDelegate{
         
         
         
-        
+        //PRAGMA MARK: Constraints
         stackView = UIStackView(arrangedSubviews: [ramenImageView, oreoImageView, pizzaImageView, poptartImageView, popsicleImageView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         
         stackView.isHidden = true
-        
-        
-        
-        
-        
-        
         navBar.addSubview(stackView)
         
         stackView.leftAnchor.constraint(equalTo: navBar.leftAnchor).isActive = true
@@ -188,7 +183,7 @@ class ViewController: UIViewController, UITableViewDelegate{
     
 }
 
-
+//PRAGMA MARK: UITableViewDataSource
 
 extension ViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
