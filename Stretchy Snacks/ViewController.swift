@@ -25,6 +25,7 @@ class ViewController: UIViewController, UITableViewDelegate{
     var popsicleImageView: UIImageView!
     var stackView: UIStackView!
     var foodTitles: [String] = []
+    var label: UILabel!
     
     
     @objc func handleTap(tapSender:UITapGestureRecognizer){
@@ -55,12 +56,16 @@ class ViewController: UIViewController, UITableViewDelegate{
     }
     
 
-    
+//
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
+
+       
         
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+        
+        
+        
         
         //PRAGMA MARK: Tap gestures & setting images
         let ramenTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
@@ -139,6 +144,15 @@ class ViewController: UIViewController, UITableViewDelegate{
         self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
+        label = UILabel(frame: CGRect(x: 0, y:0 , width: 100, height: 100))
+        navBar.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.centerXAnchor.constraint(equalTo: navBar.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: navBar.centerYAnchor).isActive = true
+        label.textAlignment = .center
+        label.text = "SNACKS"
+        
+        
         
         self.view.layoutIfNeeded()
     }
@@ -164,7 +178,6 @@ class ViewController: UIViewController, UITableViewDelegate{
             
             if self.navBarHeight.constant == 64 {
                 self.navBarHeight.constant = 200
-                
                 self.stackView.isHidden = false
                 self.navBar.bringSubview(toFront: self.plusButtonOutlet)
                 
