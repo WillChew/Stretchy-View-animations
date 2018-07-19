@@ -12,6 +12,7 @@
 		21ED40422100EE8C00B9F654 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21ED40402100EE8C00B9F654 /* Main.storyboard */; };
 		21ED40442100EE8E00B9F654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21ED40432100EE8E00B9F654 /* Assets.xcassets */; };
 		21ED40472100EE8E00B9F654 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21ED40452100EE8E00B9F654 /* LaunchScreen.storyboard */; };
+		21ED4051210139BA00B9F654 /* FoodNameCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ED4050210139BA00B9F654 /* FoodNameCellTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		21ED40432100EE8E00B9F654 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21ED40462100EE8E00B9F654 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		21ED40482100EE8E00B9F654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21ED4050210139BA00B9F654 /* FoodNameCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodNameCellTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				21ED403C2100EE8C00B9F654 /* AppDelegate.swift */,
+				21ED4050210139BA00B9F654 /* FoodNameCellTableViewCell.swift */,
 				21ED403E2100EE8C00B9F654 /* ViewController.swift */,
 				21ED40402100EE8C00B9F654 /* Main.storyboard */,
 				21ED40432100EE8E00B9F654 /* Assets.xcassets */,
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21ED4051210139BA00B9F654 /* FoodNameCellTableViewCell.swift in Sources */,
 				21ED403F2100EE8C00B9F654 /* ViewController.swift in Sources */,
 				21ED403D2100EE8C00B9F654 /* AppDelegate.swift in Sources */,
 			);
