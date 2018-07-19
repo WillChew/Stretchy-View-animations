@@ -22,29 +22,38 @@ class ViewController: UIViewController, UITableViewDelegate{
     var popsicleImageView: UIImageView!
     
     
-    
     var stackView: UIStackView!
     var foodTitles: [String] = []
     var tapGesture = UITapGestureRecognizer()
     
     @objc func handleTap(tapSender:UITapGestureRecognizer){
-        var sender = tapSender.view!.tag
+        let sender = tapSender.view!.tag
         
+        tableView.beginUpdates()
+
         switch sender {
         case 1:
-            print("Ramen")
+            foodTitles.append("Ramen")
         case 2:
-            print("oreo")
+            foodTitles.append("oreo")
         case 3:
-            print("pizza")
+            foodTitles.append("pizza")
         case 4:
-            print("poptart")
+            foodTitles.append("poptart")
         case 5:
-            print("popsicle")
+            foodTitles.append("popsicle")
         default:
-            print("none")
+            return
         }
+        
+        let indexPath: IndexPath = IndexPath(row: (self.foodTitles.count - 1), section: 0)
+        tableView.insertRows(at: [indexPath], with: .left)
+        tableView.endUpdates()
+//        self.tableView.reloadData()
+
     }
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -175,7 +184,12 @@ class ViewController: UIViewController, UITableViewDelegate{
             print("plus button pressed")
         }
     }
+    
+    
 }
+
+
+
 extension ViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         
@@ -200,6 +214,8 @@ extension ViewController: UITableViewDataSource {
         return cell
         
     }
+    
+    
 }
 
 
