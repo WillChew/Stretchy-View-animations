@@ -26,10 +26,24 @@ class ViewController: UIViewController, UITableViewDelegate{
     var stackView: UIStackView!
     var foodTitles: [String] = []
     var tapGesture = UITapGestureRecognizer()
-
-    @objc func handleTap(){
+    
+    @objc func handleTap(tapSender:UITapGestureRecognizer){
+        var sender = tapSender.view!.tag
         
-        print("ramen")
+        switch sender {
+        case 1:
+            print("Ramen")
+        case 2:
+            print("oreo")
+        case 3:
+            print("pizza")
+        case 4:
+            print("poptart")
+        case 5:
+            print("popsicle")
+        default:
+            print("none")
+        }
     }
     
     override func viewDidLoad() {
@@ -37,49 +51,62 @@ class ViewController: UIViewController, UITableViewDelegate{
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-
         
-        tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         
+        let ramenTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        let oreoTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        let pizzaTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        let poptartTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        let popsicleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        
+        ramenTapGesture.numberOfTapsRequired = 1
+        oreoTapGesture.numberOfTapsRequired = 1
+        pizzaTapGesture.numberOfTapsRequired = 1
+        poptartTapGesture.numberOfTapsRequired = 1
+        popsicleTapGesture.numberOfTapsRequired = 1
         
         let ramenImage = UIImage(named: "ramen")
         ramenImageView = UIImageView(image: ramenImage)
         ramenImageView.contentMode = .scaleAspectFit
         ramenImageView.isUserInteractionEnabled = true
-        ramenImageView.addGestureRecognizer(self.tapGesture)
+        ramenImageView.addGestureRecognizer(ramenTapGesture)
         ramenImageView.tag = 1
-
+        
         
         let oreoImage = UIImage(named: "oreos")
         oreoImageView = UIImageView(image: oreoImage)
         oreoImageView.contentMode = .scaleAspectFit
         oreoImageView.isUserInteractionEnabled = true
+        oreoImageView.addGestureRecognizer(oreoTapGesture)
         oreoImageView.tag = 2
-
-
+        
+        
         
         let pizzaImage = UIImage(named: "pizza_pockets")
         pizzaImageView = UIImageView(image: pizzaImage)
         pizzaImageView.contentMode = .scaleAspectFit
         pizzaImageView.isUserInteractionEnabled = true
+        pizzaImageView.addGestureRecognizer(pizzaTapGesture)
         pizzaImageView.tag = 3
-
+        
         
         let poptartImage = UIImage(named: "pop_tarts")
         poptartImageView = UIImageView(image: poptartImage)
         poptartImageView.contentMode = .scaleAspectFit
         poptartImageView.isUserInteractionEnabled = true
+        poptartImageView.addGestureRecognizer(poptartTapGesture)
         poptartImageView.tag = 4
         
-
+        
         let popsicleImage = UIImage(named: "popsicle")
         popsicleImageView = UIImageView(image: popsicleImage)
         popsicleImageView.contentMode = .scaleAspectFit
         popsicleImageView.isUserInteractionEnabled = true
-        popsicleImageiew.tag = 5
-
-
-      
+        popsicleImageView.addGestureRecognizer(popsicleTapGesture)
+        popsicleImageView.tag = 5
+        
+        
+        
         
         
         stackView = UIStackView(arrangedSubviews: [ramenImageView, oreoImageView, pizzaImageView, poptartImageView, popsicleImageView])
@@ -90,12 +117,12 @@ class ViewController: UIViewController, UITableViewDelegate{
         stackView.isHidden = true
         
         
-
-       
-
+        
+        
+        
         
         navBar.addSubview(stackView)
-
+        
         stackView.leftAnchor.constraint(equalTo: navBar.leftAnchor).isActive = true
         stackView.rightAnchor.constraint(equalTo: navBar.rightAnchor).isActive = true
         stackView.topAnchor.constraint(equalTo: navBar.topAnchor).isActive = true
@@ -108,8 +135,8 @@ class ViewController: UIViewController, UITableViewDelegate{
         self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
-
-         self.view.layoutIfNeeded()
+        
+        self.view.layoutIfNeeded()
     }
     
     
@@ -174,14 +201,14 @@ extension ViewController: UITableViewDataSource {
         
     }
 }
-    
 
 
 
-    
-    
-    
-    
-    
+
+
+
+
+
+
 
 
