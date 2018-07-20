@@ -26,6 +26,8 @@ class ViewController: UIViewController, UITableViewDelegate{
     var stackView: UIStackView!
     var foodTitles: [String] = []
     var label: UILabel!
+    var yConstraint: NSLayoutConstraint!
+    var otherConstraint: NSLayoutConstraint!
     
     
     @objc func handleTap(tapSender:UITapGestureRecognizer){
@@ -60,8 +62,7 @@ class ViewController: UIViewController, UITableViewDelegate{
     //
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
+self.tableView.rowHeight = 50
         
         
         
@@ -148,7 +149,10 @@ class ViewController: UIViewController, UITableViewDelegate{
         navBar.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.centerXAnchor.constraint(equalTo: navBar.centerXAnchor).isActive = true
-        label.centerYAnchor.constraint(equalTo: navBar.centerYAnchor).isActive = true
+       yConstraint = label.centerYAnchor.constraint(equalTo: navBar.centerYAnchor)
+        yConstraint.isActive = true
+
+        label.clipsToBounds = true
         label.textAlignment = .center
         label.text = "SNACKS"
         
@@ -179,11 +183,20 @@ class ViewController: UIViewController, UITableViewDelegate{
             if self.navBarHeight.constant == 64 {
                 self.navBarHeight.constant = 200
                 self.stackView.isHidden = false
+                
+                
+                self.label.text = "ADD A SNACK"
                 self.navBar.bringSubview(toFront: self.plusButtonOutlet)
+                 self.yConstraint.constant = -50
+                
                 
             } else {
                 self.navBarHeight.constant = 64
                 self.stackView.isHidden = true
+                self.label.text = "SNACKS"
+                self.yConstraint.constant = 0
+               
+
             }
             self.view.layoutIfNeeded()
             
@@ -223,8 +236,13 @@ extension ViewController: UITableViewDataSource {
         
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
     
 }
+
 
 
 
